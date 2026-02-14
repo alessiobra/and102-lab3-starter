@@ -10,23 +10,25 @@ import com.google.gson.annotations.SerializedName
  */
 class NationalPark {
 
-    // Name field
     @JvmField
     @SerializedName("fullName")
     var name: String? = null
 
-    // Description field
     @JvmField
     @SerializedName("description")
     var description: String? = null
 
-    // Location or State field
     @JvmField
     @SerializedName("states")
     var location: String? = null
+    @SerializedName("images")
+    var images: List<Image>? = null
 
-    //TODO parkImageUrl
+    // Convenience property to access the first image’s URL
+    val imageUrl: String? get() = images?.firstOrNull()?.url
 
-
-    //TODO-STRETCH-GOALS
+    class Image {
+        @SerializedName("url")
+        var url: String? = null
+    }
 }
